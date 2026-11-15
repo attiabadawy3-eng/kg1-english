@@ -241,7 +241,10 @@ function recorder() {
   $('#kidname').onchange = e => { S.kidName = e.target.value.trim(); save(); recorder(); };
   $('#photo').onchange = async e => {
     const f = e.target.files[0]; if (!f) return;
-    try { const b = await squarePhoto(f); await idb('readwrite', s => s.put(b, 'kid_photo')); setKidPhoto(b); } catch { alert('مقدرتش أحفظ الصورة'); }
+    try {
+      let b; try { b = await squarePhoto(f); } catch { b = f; } // can't shrink this format: keep the original (CSS crops it round)
+      await idb('readwrite', s => s.put(b, 'kid_photo')); setKidPhoto(b);
+    } catch { alert('مقدرتش أحفظ الصورة'); }
     recorder();
   };
   if ($('#nophoto')) $('#nophoto').onclick = async () => { await idb('readwrite', s => s.delete('kid_photo')); setKidPhoto(null); recorder(); };
