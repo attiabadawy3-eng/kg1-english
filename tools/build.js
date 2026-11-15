@@ -5,14 +5,15 @@ const root = path.join(__dirname, '..');
 const D = require(path.join(root, 'data.js'));
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const en = s => `<prosody rate="-20%">${s}</prosody>`;
-const ph = ipa => `<phoneme alphabet="ipa" ph="${ipa === 'sss' ? 'sːː' : ipa}">x</phoneme>`;
+const ph = ipa => `<phoneme alphabet="ipa" ph="${ipa}">x</phoneme>`;
 const ch = L => `<say-as interpret-as="characters">${L}</say-as>`;
 const items = [];
-const add = (key, lang, ssml) => items.push({ key, lang, ssml });
+// English -> tts.ps1 (offline Windows voice, ssml). Arabic -> tts_ar.py (Egyptian voice, plain text).
+const add = (key, lang, s) => items.push(lang === 'ar' ? { key, lang, text: s } : { key, lang, ssml: s });
 
 for (const [id, w] of Object.entries(D.words)) {
   add('w_' + id, 'en', en(esc(w.say || w.en)));
-  add('a_' + id, 'ar', esc(w.ar));
+  add('a_' + id, 'ar', w.ar);
 }
 for (const [L, l] of Object.entries(D.letters)) {
   add('l_' + L, 'en', en(ch(L)));
@@ -25,7 +26,7 @@ for (let k = 1; k <= 10; k++) {
   add('n_' + k, 'en', en(D.numbersEn[k]));
   add('na_' + k, 'ar', D.numbersAr[k]);
 }
-for (const [k, t] of Object.entries(D.instr)) add(k, 'ar', esc(t));
+for (const [k, t] of Object.entries(D.instr)) add(k, 'ar', t);
 fs.writeFileSync(path.join(__dirname, 'audio_src.json'), JSON.stringify(items, null, 1));
 
 // offline file list for the service worker

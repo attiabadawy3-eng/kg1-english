@@ -13,6 +13,7 @@ $voiceFor = @{ en = ($voices | Where-Object { $_.Language -eq 'en-US' -and $_.Di
 $items = Get-Content -Raw -Encoding UTF8 (Join-Path $Root 'tools\audio_src.json') | ConvertFrom-Json
 $made = 0
 foreach ($it in $items) {
+  if ($it.lang -ne 'en') { continue } # Arabic is made by tts_ar.py (Egyptian voice)
   $out = Join-Path $Root ("audio\" + $it.key + ".wav")
   if (Test-Path $out) { continue }
   $synth.Voice = $voiceFor[$it.lang]

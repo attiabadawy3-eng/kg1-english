@@ -8,7 +8,7 @@ const W = DATA.words, LET = DATA.letters, LES = DATA.lessons;
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0;[a[i], a[j]] = [a[j], a[i]]; } return a; };
 const rand = a => a[Math.random() * a.length | 0];
 const uniq = a => [...new Set(a)];
-const img = id => `<img src="img/${id}.png" alt="${W[id].en}" draggable="false">`;
+const img = id => W[id].emoji ? `<span class="emo" role="img" aria-label="${W[id].en}">${W[id].emoji}</span>` : `<img src="img/${id}.png" alt="${W[id].en}" draggable="false">`;
 const wait = ms => new Promise(r => setTimeout(r, ms));
 
 // ---------- sound ----------
@@ -50,7 +50,7 @@ async function say(keys) {
   if (musicGain) musicGain.gain.value = S.vol * 0.04;
   for (const k of [].concat(keys)) {
     if (my !== sayToken) return;
-    voice.src = `audio/${k}.wav`;
+    voice.src = `audio/${k}.${/^(a|na|i|p)_/.test(k) ? 'mp3' : 'wav'}`; // Arabic clips are mp3
     try { await Promise.race([voice.play().then(() => new Promise(r => { voice.onended = voice.onerror = r; })), new Promise(r => { stopPrev = r; })]); } catch { }
     await wait(150);
   }
@@ -90,9 +90,9 @@ function targets(cur, review, n, prefix) {
   for (let k = 1; k < out.length; k++) if (out[k] === out[k - 1]) { const j = out.findIndex((v, m) => m > k && v !== out[k]); if (j > 0)[out[k], out[j]] = [out[j], out[k]]; }
   return out;
 }
-const lessonTitle = l => l.type === 'letter' ? `حرف ${l.letter} ${LET[l.letter].lower}` : l.type === 'numbers' ? `الأرقام ${l.items[0]} - ${l.items.at(-1)}` : l.titleAr;
+const lessonTitle = l => l.type === 'letter' ? `حرف ${l.letter} ${LET[l.letter].lower}` : l.type === 'numbers' ? `رقم ${l.items[0]}` : l.titleAr;
 const lessonPages = l => l.type === 'letter' ? LET[l.letter].pages : l.pages;
-const unlocked = i => i === 0 || !!S.done[LES[i - 1].id];
+const unlocked = i => LES[i].bonus || i === 0 || !!S.done[LES[i - 1].id]; // optional word lessons are always open
 const COUNT_IMGS = ['apple', 'crayon', 'pencil', 'box', 'chair', 'tree', 'sun', 'cat'];
 const many = (k, id) => `<div class="many">${Array(k).fill(img(id)).join('')}</div>`;
 
@@ -113,11 +113,12 @@ function wireBar() {
 }
 function home() {
   sayToken++;
-  app.innerHTML = topBar() + `<main class="home">${petHTML(true)}` + DATA.units.map(u => `
-    <section><h2>${u.titleAr}: <span dir="ltr">${u.title}</span></h2><div class="tiles">` +
-    LES.map((l, i) => [l, i]).filter(([l]) => l.unit === u.n).map(([l, i]) => {
+  const sections = [['الحروف والأرقام', l => !l.bonus], ['كلمات المذكرة (الوحدة 1 و 2) — اختياري', l => l.bonus]];
+  app.innerHTML = topBar() + `<main class="home">${petHTML(true)}` + sections.map(([title, pick]) => `
+    <section><h2>${title}</h2><div class="tiles">` +
+    LES.map((l, i) => [l, i]).filter(([l]) => pick(l)).map(([l, i]) => {
       const lock = !unlocked(i), st = S.stars[l.id] || 0;
-      const icon = l.type === 'letter' ? `<b class="glyph">${l.letter}${LET[l.letter].lower}</b>` : l.type === 'numbers' ? `<b class="glyph">${l.items[0]}-${l.items.at(-1)}</b>` : img(l.items[0]);
+      const icon = l.type === 'letter' ? `<b class="glyph">${l.letter}${LET[l.letter].lower}</b>` : l.type === 'numbers' ? `<b class="glyph num-glyph">${l.items[0]}</b>` : img(l.items[0]);
       const pg = lessonPages(l) ? `صفحة ${lessonPages(l)}` : 'إضافي (مش في الكتاب)';
       return `<button class="tile ${lock ? 'locked' : ''} ${S.done[l.id] ? 'done' : ''}" data-i="${i}">
         <span class="num">${i + 1}</span>${icon}<span class="t">${lessonTitle(l)}</span><span class="pg">${pg}</span>
@@ -151,7 +152,8 @@ function activities(i) {
     const L = l.letter, d = LET[L], lw = d.words;
     return [
       el => cards(el, [{ html: `<b class="glyph huge">${L}${d.lower}</b>${img(lw[0])}`, text: '', keys: ['lc_' + L] },
-        ...lw.map(id => ({ html: img(id), text: `<u>${W[id].en[0]}</u>${W[id].en.slice(1)}`, sub: W[id].ar, keys: ['ls_' + L, 'w_' + id, 'a_' + id] }))]),
+        ...lw.map(id => { const w = W[id].en, k = d.end ? w.toLowerCase().indexOf(d.lower) : 0; // colour the letter's own spot in the word
+          return { html: img(id), text: `${w.slice(0, k)}<u>${w[k]}</u>${w.slice(k + 1)}`, sub: W[id].ar, keys: ['ls_' + L, 'w_' + id, 'a_' + id] }; })]),
       el => trace(el, [L, L, d.lower, d.lower]),
       el => quiz(el, 'i_touch_letter', targets([L], old.l, 5, 'L:').map(x => letterRound(x, old.l))),
       el => quiz(el, 'i_sound', targets([L], old.l, 4, 'L:').map(x => soundRound(x, old.w))),
@@ -161,7 +163,7 @@ function activities(i) {
   const nums = l.items;
   return [
     el => cards(el, nums.map(k => ({ html: `<b class="glyph huge">${k}</b>${many(k, COUNT_IMGS[k % COUNT_IMGS.length])}`, text: '', keys: ['n_' + k, 'na_' + k] }))),
-    el => trace(el, nums.flatMap(k => [k, k])),
+    el => trace(el, nums.flatMap(k => [k, k, k])),
     el => quiz(el, 'i_touch_num', targets(nums, old.n, 5, 'N:').map(k => numRound(k, uniq([...nums, ...old.n]), false))),
     el => quiz(el, 'i_count', targets(nums, old.n, 4, 'N:').map(k => numRound(k, uniq([...nums, ...old.n]), true))),
     el => match(el, 'i_match_nums', pairsFor(nums, old.n, 'N:', [1, 2, 3, 4, 5]).map(k => ({ id: 'N:' + k, a: `<b class="glyph">${k}</b>`, b: many(k, 'apple'), sayA: 'n_' + k }))),
@@ -185,7 +187,8 @@ function letterRound(L, old) {
 }
 function soundRound(L, oldWords) {
   const right = rand(LET[L].words), first = id => W[id].en[0].toUpperCase();
-  const pool = uniq([...oldWords, ...Object.keys(W)]).filter(id => first(id) !== L);
+  const same = { C: 'CKQ', K: 'CKQ', Q: 'CKQ' }[L] || L; // letters that share the sound can't be wrong answers
+  const pool = uniq([...oldWords, ...Object.keys(W)]).filter(id => !same.includes(first(id)) && !(LET[L].end && W[id].en.includes(LET[L].lower)));
   return { item: 'L:' + L, prompt: ['ls_' + L], opts: shuffle([right, ...shuffle(pool).slice(0, 2)]).map(x => ({ html: img(x), ok: x === right, say: 'w_' + x })) };
 }
 function numRound(k, pool, count) {
