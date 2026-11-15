@@ -86,6 +86,18 @@ img { max-width: 100%; pointer-events: none; }
 .finish { display: flex; flex-direction: column; align-items: center; gap: 20px; padding-top: 20px; }
 .bigstars { font-size: 100px; }
 
+/* parent recording screen */
+.parent { display: block; margin: 40px auto 0; padding: 14px 22px; border-radius: 18px; background: var(--card); color: var(--soft); font-size: 16px; box-shadow: 0 3px 0 var(--line); }
+.rec { padding: 0 16px 60px; max-width: 900px; margin: auto; }
+.rec .note { background: var(--card); border-radius: 18px; padding: 14px 18px; font-size: 18px; line-height: 1.7; }
+.rec h2 { font-size: 22px; margin: 24px 4px 10px; }
+.row { display: flex; align-items: center; gap: 10px; background: var(--card); border-radius: 18px; padding: 8px 12px; margin-bottom: 8px; box-shadow: 0 3px 0 var(--line); }
+.row .txt { flex: 1; font-size: 20px; }
+.row .mark { width: 28px; text-align: center; }
+.rb { width: 58px; height: 58px; border-radius: 16px; font-size: 26px; background: var(--bg); }
+.row.on { box-shadow: 0 0 0 4px var(--red); }
+.row.on .recb { background: var(--red); color: #fff; }
+
 /* emoji pictures (letters the booklet has no picture for) — sized like the images they replace */
 .emo { display: inline-block; line-height: 1; font-family: 'Noto Color Emoji', 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif; }
 .card .emo { font-size: min(30vh, 240px); }

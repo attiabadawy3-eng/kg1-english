@@ -50,7 +50,7 @@ async function say(keys) {
   if (musicGain) musicGain.gain.value = S.vol * 0.04;
   for (const k of [].concat(keys)) {
     if (my !== sayToken) return;
-    voice.src = `audio/${k}.${/^(a|na|i|p)_/.test(k) ? 'mp3' : 'wav'}`; // Arabic clips are mp3
+    voice.src = myVoice[k] || `audio/${k}.${/^(a|na|i|p)_/.test(k) ? 'mp3' : 'wav'}`; // parent's recording wins; Arabic clips are mp3
     try { await Promise.race([voice.play().then(() => new Promise(r => { voice.onended = voice.onerror = r; })), new Promise(r => { stopPrev = r; })]); } catch { }
     await wait(150);
   }
@@ -92,7 +92,6 @@ function targets(cur, review, n, prefix) {
 }
 const lessonTitle = l => l.type === 'letter' ? `حرف ${l.letter} ${LET[l.letter].lower}` : l.type === 'numbers' ? `رقم ${l.items[0]}` : l.titleAr;
 const lessonPages = l => l.type === 'letter' ? LET[l.letter].pages : l.pages;
-const unlocked = i => LES[i].bonus || i === 0 || !!S.done[LES[i - 1].id]; // optional word lessons are always open
 const COUNT_IMGS = ['apple', 'crayon', 'pencil', 'box', 'chair', 'tree', 'sun', 'cat'];
 const many = (k, id) => `<div class="many">${Array(k).fill(img(id)).join('')}</div>`;
 
@@ -117,15 +116,70 @@ function home() {
   app.innerHTML = topBar() + `<main class="home">${petHTML(true)}` + sections.map(([title, pick]) => `
     <section><h2>${title}</h2><div class="tiles">` +
     LES.map((l, i) => [l, i]).filter(([l]) => pick(l)).map(([l, i]) => {
-      const lock = !unlocked(i), st = S.stars[l.id] || 0;
+      const st = S.stars[l.id] || 0;
       const icon = l.type === 'letter' ? `<b class="glyph">${l.letter}${LET[l.letter].lower}</b>` : l.type === 'numbers' ? `<b class="glyph num-glyph">${l.items[0]}</b>` : img(l.items[0]);
       const pg = lessonPages(l) ? `صفحة ${lessonPages(l)}` : 'إضافي (مش في الكتاب)';
-      return `<button class="tile ${lock ? 'locked' : ''} ${S.done[l.id] ? 'done' : ''}" data-i="${i}">
+      return `<button class="tile ${S.done[l.id] ? 'done' : ''}" data-i="${i}">
         <span class="num">${i + 1}</span>${icon}<span class="t">${lessonTitle(l)}</span><span class="pg">${pg}</span>
-        <span class="st">${lock ? '🔒' : '★'.repeat(st) + '☆'.repeat(3 - st)}</span></button>`;
-    }).join('') + `</div></section>`).join('') + `</main>`;
+        <span class="st">${'★'.repeat(st) + '☆'.repeat(3 - st)}</span></button>`;
+    }).join('') + `</div></section>`).join('') +
+    `<button class="parent" id="parent">🎙️ تسجيل صوت بابا — اضغط مطوّل</button></main>`;
   wireBar();
-  app.querySelectorAll('.tile').forEach(b => b.onclick = () => { audioInit(); const i = +b.dataset.i; unlocked(i) ? runLesson(i) : say('i_locked'); });
+  app.querySelectorAll('.tile').forEach(b => b.onclick = () => { audioInit(); runLesson(+b.dataset.i); });
+  // long-press (1.5s) so the child doesn't open it by accident
+  const p = $('#parent'); let t;
+  p.onpointerdown = () => { t = setTimeout(recorder, 1500); };
+  p.onpointerup = p.onpointerleave = p.onpointercancel = () => clearTimeout(t);
+}
+
+// ---------- parent recordings ----------
+// The parent's own Egyptian voice replaces the generated Arabic clips. Stored only on this device (IndexedDB), never sent.
+const myVoice = {}; // clip key -> object URL
+const dbp = new Promise((ok, no) => { try { const r = indexedDB.open('kidsVoice', 1); r.onupgradeneeded = () => r.result.createObjectStore('v'); r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error); } catch (e) { no(e); } });
+const idb = (mode, fn) => dbp.then(d => new Promise((ok, no) => { const t = d.transaction('v', mode), q = fn(t.objectStore('v')); t.oncomplete = () => ok(q.result); t.onerror = () => no(t.error); }));
+const voicesReady = (async () => { try { for (const k of await idb('readonly', s => s.getAllKeys())) myVoice[k] = URL.createObjectURL(await idb('readonly', s => s.get(k))); } catch { } })();
+function recorder() {
+  sayToken++;
+  const groups = [
+    ['التعليمات والتشجيع (أهم حاجة)', Object.entries(DATA.instr)],
+    ['الأرقام بالعربي', DATA.numbersAr.map((t, k) => ['na_' + k, t]).slice(1)],
+    ['معاني الكلمات', Object.entries(W).map(([id, w]) => ['a_' + id, w.ar])],
+  ];
+  const n = Object.keys(myVoice).length;
+  app.innerHTML = topBar(`<button class="ico" id="homeBtn" aria-label="الرئيسية">🏠</button>`) + `<main class="rec">
+    <p class="note">اضغط ⏺ واقرا الجملة بصوتك باللهجة المصرية، وبعدين ⏹. التسجيل بيشتغل بدل الصوت الآلي على طول، وبيتحفظ على الجهاز ده بس.
+    <br>متسجّل لحد دلوقتي: <b id="cnt">${n}</b></p>` +
+    groups.map(([title, rows]) => `<h2>${title}</h2>` + rows.map(([k, t]) => `
+      <div class="row" data-k="${k}"><span class="txt">${t}</span>
+        <button class="rb play" aria-label="اسمع">▶</button><button class="rb recb" aria-label="سجّل">⏺</button>
+        <button class="rb del" aria-label="امسح التسجيل" ${myVoice[k] ? '' : 'hidden'}>🗑</button><span class="mark">${myVoice[k] ? '✅' : ''}</span></div>`).join('')).join('') + `</main>`;
+  wireBar(); $('#homeBtn').onclick = () => { stopRec(); home(); };
+  let stream, mr = null;
+  const stopRec = () => { if (mr && mr.state === 'recording') mr.stop(); };
+  const refresh = (row, k) => { row.querySelector('.mark').textContent = myVoice[k] ? '✅' : ''; row.querySelector('.del').hidden = !myVoice[k]; $('#cnt').textContent = Object.keys(myVoice).length; };
+  app.querySelectorAll('.row').forEach(row => {
+    const k = row.dataset.k, rb = row.querySelector('.recb');
+    row.querySelector('.play').onclick = () => { audioInit(); say(k); };
+    row.querySelector('.del').onclick = async () => { await idb('readwrite', s => s.delete(k)); URL.revokeObjectURL(myVoice[k]); delete myVoice[k]; refresh(row, k); };
+    rb.onclick = async () => {
+      audioInit();
+      if (mr && mr.state === 'recording') { stopRec(); return; } // second tap = stop
+      try { stream = stream || await navigator.mediaDevices.getUserMedia({ audio: true }); }
+      catch { alert('لازم تسمح للتطبيق يستخدم الميكروفون'); return; }
+      sayToken++; voice.pause();
+      const chunks = []; mr = new MediaRecorder(stream);
+      mr.ondataavailable = e => e.data.size && chunks.push(e.data);
+      mr.onstop = async () => {
+        rb.textContent = '⏺'; row.classList.remove('on');
+        const blob = new Blob(chunks, { type: mr.mimeType || 'audio/webm' });
+        if (blob.size < 1000) return; // nothing recorded
+        try { await idb('readwrite', s => s.put(blob, k)); } catch { alert('مقدرتش أحفظ التسجيل'); return; }
+        if (myVoice[k]) URL.revokeObjectURL(myVoice[k]);
+        myVoice[k] = URL.createObjectURL(blob); refresh(row, k); say(k);
+      };
+      mr.start(); rb.textContent = '⏹'; row.classList.add('on');
+    };
+  });
 }
 
 // ---------- lesson runner ----------
