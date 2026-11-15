@@ -40,7 +40,7 @@ function startMusic() {
 function stopMusic() { clearInterval(musicTimer); }
 function sfx(kind) { // short effects, not affected by music volume slider
   if (!ac) return; const t = ac.currentTime, g = ac.createGain(); g.connect(master); g.gain.value = 0.25;
-  const seq = kind === 'good' ? [523, 659, 784] : kind === 'star' ? [784, 988, 1175, 1568] : kind === 'meow' ? [700, 900, 600] : [300, 220];
+  const seq = kind === 'pop' ? [900, 1400, 600] : kind === 'good' ? [523, 659, 784] : kind === 'star' ? [784, 988, 1175, 1568] : kind === 'meow' ? [700, 900, 600] : [300, 220];
   seq.forEach((f, i) => { const o = ac.createOscillator(); o.type = kind === 'bad' ? 'triangle' : 'sine'; o.frequency.value = f; o.connect(g); o.start(t + i * 0.1); o.stop(t + i * 0.1 + 0.12); });
 }
 // say(['w_cat','a_cat']) plays clips in order; a newer say() cancels the older one.
@@ -114,7 +114,8 @@ function wireBar() {
 function home() {
   sayToken++;
   const sections = [['الحروف والأرقام', l => !l.bonus], ['كلمات المذكرة (الوحدة 1 و 2) — اختياري', l => l.bonus]];
-  app.innerHTML = topBar() + `<main class="home">${petHTML(true)}` + sections.map(([title, pick]) => `
+  app.innerHTML = topBar() + `<main class="home"><div class="hero">${kidHTML('hero-face')}${petHTML(true)}</div>` +
+    (S.kidName ? `<p class="hello">أهلاً يا ${escHTML(S.kidName)} 👋</p>` : '') + sections.map(([title, pick]) => `
     <section><h2>${title}</h2><div class="tiles">` +
     LES.map((l, i) => [l, i]).filter(([l]) => pick(l)).map(([l, i]) => {
       const st = S.stars[l.id] || 0;
@@ -126,6 +127,7 @@ function home() {
     }).join('') + `</div></section>`).join('') +
     `<button class="parent" id="parent">🎙️ تسجيل صوت بابا — اضغط مطوّل</button></main>`;
   wireBar();
+  const face = $('.hero-face'); if (face) face.onclick = () => { audioInit(); say('i_hello'); };
   app.querySelectorAll('.tile').forEach(b => b.onclick = () => { audioInit(); runLesson(+b.dataset.i); });
   // long-press (1.5s) so the child doesn't open it by accident
   const p = $('#parent'); let t;
@@ -138,7 +140,28 @@ function home() {
 const myVoice = {}; // clip key -> object URL
 const dbp = new Promise((ok, no) => { try { const r = indexedDB.open('kidsVoice', 1); r.onupgradeneeded = () => r.result.createObjectStore('v'); r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error); } catch (e) { no(e); } });
 const idb = (mode, fn) => dbp.then(d => new Promise((ok, no) => { const t = d.transaction('v', mode), q = fn(t.objectStore('v')); t.oncomplete = () => ok(q.result); t.onerror = () => no(t.error); }));
-const voicesReady = (async () => { try { for (const k of await idb('readonly', s => s.getAllKeys())) myVoice[k] = URL.createObjectURL(await idb('readonly', s => s.get(k))); } catch { } })();
+// her photo (key 'kid_photo') lives in the same on-device store; it is never uploaded anywhere
+let kidPhoto = null, kidImg = null;
+const setKidPhoto = blob => { if (kidPhoto) URL.revokeObjectURL(kidPhoto); kidPhoto = blob ? URL.createObjectURL(blob) : null; kidImg = null; if (kidPhoto) { kidImg = new Image(); kidImg.src = kidPhoto; } };
+const voicesReady = (async () => {
+  try {
+    for (const k of await idb('readonly', s => s.getAllKeys())) {
+      const b = await idb('readonly', s => s.get(k));
+      if (k === 'kid_photo') setKidPhoto(b); else myVoice[k] = URL.createObjectURL(b);
+    }
+  } catch { }
+  if (kidPhoto && $('.home')) home(); // show her photo once loaded
+})();
+const escHTML = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const nm = t => t.replace('{name}', S.kidName || 'حبيبتي'); // sentence as the parent should say it
+const kidHTML = cls => kidPhoto ? `<span class="kid ${cls}"><img src="${kidPhoto}" alt=""></span>` : '';
+// center-crop to a 400px square jpeg so it stays small and loads fast
+async function squarePhoto(file) {
+  const im = await createImageBitmap(file), n = Math.min(im.width, im.height), c = document.createElement('canvas');
+  c.width = c.height = 400;
+  c.getContext('2d').drawImage(im, (im.width - n) / 2, (im.height - n) / 2, n, n, 0, 0, 400, 400);
+  return new Promise(r => c.toBlob(r, 'image/jpeg', 0.85));
+}
 // one shared mic; startRec(k, done) records clip k, saves it, then calls done(true|false)
 let micStream = null, mr = null;
 const recording = () => mr && mr.state === 'recording';
@@ -167,7 +190,7 @@ function quickRec(i) {
   if (i >= list.length) return recorder();
   const [k, t] = list[i];
   app.innerHTML = topBar(`<button class="ico" id="homeBtn" aria-label="الرئيسية">🏠</button>`) + `<main class="quick">
-    <div class="qn">${i + 1} / ${list.length} ${myVoice[k] ? '✅' : ''}</div><div class="qt">${t}</div>
+    <div class="qn">${i + 1} / ${list.length} ${myVoice[k] ? '✅' : ''}</div><div class="qt">${nm(t)}</div>
     <button class="bigrec" id="rec">${myVoice[k] ? '⏺ سجّلها تاني' : '⏺ اضغط وقولها'}</button>
     <nav class="cardnav"><button class="go soft" id="prev" ${i ? '' : 'disabled'}>➡</button>
       <button class="go soft" id="play" ${myVoice[k] ? '' : 'disabled'}>▶</button><button class="go" id="next">⬅</button></nav>
@@ -200,15 +223,28 @@ function recorder() {
   ];
   const core = coreClips(), done = core.filter(([k]) => myVoice[k]).length;
   app.innerHTML = topBar(`<button class="ico" id="homeBtn" aria-label="الرئيسية">🏠</button>`) + `<main class="rec">
+    <section class="kidset"><h2>صورة بنتك واسمها</h2>
+      <div class="kidrow">${kidHTML('set-face') || '<span class="kid set-face empty">👧</span>'}
+        <label class="go soft pick">📷 اختار صورة<input type="file" accept="image/*" id="photo" hidden></label>
+        ${kidPhoto ? '<button class="go soft" id="nophoto">🗑</button>' : ''}</div>
+      <label class="namel">اسمها: <input id="kidname" value="${escHTML(S.kidName || '')}" maxlength="20" placeholder="اكتب اسمها"></label>
+      <p class="note">الصورة والاسم بيتحفظوا على الجهاز ده بس، ومش بيترفعوا على النت.</p></section>
     <button class="bigrec" id="quick">⚡ تسجيل سريع — ${done} / ${core.length}</button>
     <p class="note">التسجيل بيشتغل بدل الصوت الآلي على طول، وبيتحفظ على الجهاز ده بس.</p>` +
     groups.map(([title, rows]) => `<h2>${title}</h2>` + rows.map(([k, t]) => `
-      <div class="row" data-k="${k}"><span class="txt">${t}</span>
+      <div class="row" data-k="${k}"><span class="txt">${nm(t)}</span>
         <button class="rb play" aria-label="اسمع">▶</button><button class="rb recb" aria-label="سجّل">⏺</button>
         <button class="rb del" aria-label="امسح التسجيل" ${myVoice[k] ? '' : 'hidden'}>🗑</button><span class="mark">${myVoice[k] ? '✅' : ''}</span></div>`).join('')).join('') + `</main>`;
   wireBar();
   $('#homeBtn').onclick = () => { stopRec(); home(); };
   $('#quick').onclick = () => { stopRec(); quickRec(); };
+  $('#kidname').onchange = e => { S.kidName = e.target.value.trim(); save(); recorder(); };
+  $('#photo').onchange = async e => {
+    const f = e.target.files[0]; if (!f) return;
+    try { const b = await squarePhoto(f); await idb('readwrite', s => s.put(b, 'kid_photo')); setKidPhoto(b); } catch { alert('مقدرتش أحفظ الصورة'); }
+    recorder();
+  };
+  if ($('#nophoto')) $('#nophoto').onclick = async () => { await idb('readwrite', s => s.delete('kid_photo')); setKidPhoto(null); recorder(); };
   const refresh = (row, k) => { row.querySelector('.mark').textContent = myVoice[k] ? '✅' : ''; row.querySelector('.del').hidden = !myVoice[k]; };
   app.querySelectorAll('.row').forEach(row => {
     const k = row.dataset.k, rb = row.querySelector('.recb');
@@ -250,7 +286,7 @@ function activities(i) {
         ...lw.map(id => { const w = W[id].en, k = d.end ? w.toLowerCase().indexOf(d.lower) : 0; // colour the letter's own spot in the word
           return { html: img(id), text: `${w.slice(0, k)}<u>${w[k]}</u>${w.slice(k + 1)}`, sub: W[id].ar, keys: ['ls_' + L, 'w_' + id, 'a_' + id] }; })]),
       el => trace(el, [L, L, d.lower, d.lower]),
-      el => quiz(el, 'i_touch_letter', targets([L], old.l, 5, 'L:').map(x => letterRound(x, old.l))),
+      el => quiz(el, 'i_touch_letter', targets([L], old.l, 5, 'L:').map(x => letterRound(x, old.l)), true),
       el => quiz(el, 'i_sound', targets([L], old.l, 4, 'L:').map(x => soundRound(x, old.w))),
       el => match(el, 'i_match_letters', pairsFor([L], old.l, 'L:', Object.keys(LET)).map(x => ({ id: 'L:' + x, a: `<b class="glyph">${x}</b>`, b: `<b class="glyph">${LET[x].lower}</b>`, sayA: 'l_' + x }))),
     ];
@@ -259,7 +295,7 @@ function activities(i) {
   return [
     el => cards(el, nums.map(k => ({ html: `<b class="glyph huge">${k}</b>${many(k, COUNT_IMGS[k % COUNT_IMGS.length])}`, text: '', keys: ['n_' + k, 'na_' + k] }))),
     el => trace(el, nums.flatMap(k => [k, k, k])),
-    el => quiz(el, 'i_touch_num', targets(nums, old.n, 5, 'N:').map(k => numRound(k, uniq([...nums, ...old.n]), false))),
+    el => quiz(el, 'i_touch_num', targets(nums, old.n, 5, 'N:').map(k => numRound(k, uniq([...nums, ...old.n]), false)), true),
     el => quiz(el, 'i_count', targets(nums, old.n, 4, 'N:').map(k => numRound(k, uniq([...nums, ...old.n]), true))),
     el => match(el, 'i_match_nums', pairsFor(nums, old.n, 'N:', [1, 2, 3, 4, 5]).map(k => ({ id: 'N:' + k, a: `<b class="glyph">${k}</b>`, b: many(k, 'apple'), sayA: 'n_' + k }))),
   ];
@@ -304,14 +340,14 @@ async function runLesson(i) {
   const l = LES[i], st = Math.round(starSum / acts.length);
   S.done[l.id] = true; S.stars[l.id] = Math.max(S.stars[l.id] || 0, st); save();
   const el = stage(i, acts.length, acts.length);
-  el.innerHTML = `<div class="finish">${petHTML(true)}<div class="bigstars">${'⭐'.repeat(st)}</div>
+  el.innerHTML = `<div class="finish"><div class="hero">${kidHTML('hero-face crowned')}${petHTML(true)}</div><div class="bigstars">${'⭐'.repeat(st)}</div>
     <button class="go" id="next">${i + 1 < LES.length ? 'الدرس اللي بعده ⬅' : '🏠'}</button><button class="go soft" id="h">🏠</button></div>`;
   wireBar(); sfx('star'); say('p_lesson');
   $('#next').onclick = () => i + 1 < LES.length ? runLesson(i + 1) : home();
   $('#h').onclick = home;
 }
 async function celebrate(el, st, key) {
-  el.insertAdjacentHTML('beforeend', `<div class="burst">${'⭐'.repeat(st)}</div>`);
+  el.insertAdjacentHTML('beforeend', `<div class="burst">${kidHTML('burst-face crowned')}<div>${'⭐'.repeat(st)}</div></div>`);
   sfx('star'); await say(key); await wait(300);
 }
 // resolves with mistakes, or null if the user leaves (home button replaces #stage)
@@ -341,7 +377,8 @@ function cards(el, list) {
 function watchLeave(el, res) { const t = setInterval(() => { if (!alive(el)) { clearInterval(t); res(null); } }, 500); }
 
 // ---------- game 2: listen & touch (also used for sound and counting games) ----------
-function quiz(el, instr, rounds) {
+const BALLOON = ['#f4a3a3', '#9cc9ef', '#a8dcb5', '#f6cf86', '#c7b3ea'];
+function quiz(el, instr, rounds, balloons = false) { // balloons: letters/numbers float up and pop when right
   instrKey = instr;
   return new Promise(async res => {
     let mistakes = 0, r = 0;
@@ -350,12 +387,13 @@ function quiz(el, instr, rounds) {
     const show = () => {
       const q = rounds[r]; let first = true, busy = false;
       el.innerHTML = `<div class="prompt">${q.show || ''}${q.prompt.length ? '<button class="go" id="hear">🔊</button>' : ''}</div>
-        <div class="opts">${q.opts.map((o, j) => `<button class="opt" data-j="${j}">${o.html}</button>`).join('')}</div>`;
+        <div class="opts ${balloons ? 'balloons' : ''}">${q.opts.map((o, j) => `<button class="opt" data-j="${j}" style="--c:${rand(BALLOON)};--d:${(j * 0.4).toFixed(1)}s">${o.html}</button>`).join('')}</div>`;
       if (q.prompt.length) $('#hear', el).onclick = () => say(q.prompt);
       el.querySelectorAll('.opt').forEach(b => b.onclick = async () => {
         if (busy) return; const o = q.opts[+b.dataset.j];
         if (o.ok) {
-          busy = true; mark(q.item, first); b.classList.add('right'); sfx('good');
+          busy = true; mark(q.item, first); b.classList.add('right'); sfx(balloons ? 'pop' : 'good');
+          if (balloons) b.classList.add('pop');
           await say([o.say, rand(['p_good1', 'p_good2', 'p_good3'])]);
           if (!alive(el)) return;
           if (++r < rounds.length) show(); else res(mistakes);
@@ -419,7 +457,7 @@ function trace(el, glyphs) {
         sfx('good'); await say([isNum ? 'n_' + g : 'l_' + String(g).toUpperCase(), rand(['p_good1', 'p_good2', 'p_good3'])]);
         if (!alive(el)) return;
         if (++k < glyphs.length) show(); else { removeEventListener('resize', t.layout); res(Math.floor(mistakes / 3)); }
-      }, why => { if (why === 'off') { mistakes++; sfx('bad'); } });
+      }, why => { if (why === 'off') { mistakes++; sfx('bad'); } }, kidImg);
       addEventListener('resize', t.layout);
       window.__tracer = t;
       say(isNum ? 'n_' + g : 'l_' + String(g).toUpperCase());

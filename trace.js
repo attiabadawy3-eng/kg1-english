@@ -87,7 +87,8 @@ const GLYPHS = {
 GLYPHS[10] = [...GLYPHS[1], ...shift(GLYPHS[0], 1.1)];
 
 // Tracer: draws the 4 lines + glyph, follows the finger along the current stroke from its start point.
-function makeTracer(canvas, glyph, onDone, onSlip) {
+// tipImg (optional): her photo, drawn as a round face at the finger's spot along the stroke
+function makeTracer(canvas, glyph, onDone, onSlip, tipImg) {
   const strokes = GLYPHS[glyph];
   const ctx = canvas.getContext('2d');
   let si = 0, idx = -1, active = false;
@@ -122,6 +123,11 @@ function makeTracer(canvas, glyph, onDone, onSlip) {
     if (si >= strokes.length) return;
     const s = strokes[si];
     if (idx > 0) { ctx.strokeStyle = '#f2a65a'; path(s, idx + 1); }
+    if (idx >= 0 && tipImg && tipImg.complete && tipImg.naturalWidth) { // her face walks along the letter
+      const [fx, fy] = P(s[idx]), fr = Math.max(26, u * 0.24);
+      ctx.save(); ctx.beginPath(); ctx.arc(fx, fy, fr, 0, 7); ctx.clip(); ctx.drawImage(tipImg, fx - fr, fy - fr, fr * 2, fr * 2); ctx.restore();
+      ctx.lineWidth = 4; ctx.strokeStyle = '#fff'; ctx.beginPath(); ctx.arc(fx, fy, fr, 0, 7); ctx.stroke();
+    }
     // guide for current stroke: number, direction arrows, green start dot
     ctx.lineWidth = 3; ctx.strokeStyle = '#7a6f62'; ctx.setLineDash([6, 8]); if (s.length > 1) path(s, s.length); ctx.setLineDash([]);
     for (let k = Math.floor(s.length / 3); k < s.length - 3 && s.length > 6; k += Math.floor(s.length / 3)) arrow(s[k], s[k + 3]);

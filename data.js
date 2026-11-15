@@ -141,12 +141,14 @@ const DATA = {
     i_trace: 'يلّا نكتب! حطي صباعك على النقطة الخضرا وامشي ورا السهم',
     i_sound: 'اسمعي الصوت ده كويس، أنهي صورة بتبتدي بيه؟',
     i_count: 'يلّا نعدّ سوا! كام واحد؟ دوسي على الرقم',
-    p_good1: 'شاطرة يا حبيبتي!',
-    p_good2: 'الله! برافو عليكي',
+    // {name} = her name, typed by the parent on the device (never stored in this public code)
+    p_good1: 'شاطرة يا {name}!',
+    p_good2: 'الله! برافو عليكي يا {name}',
     p_good3: 'جامدة أوي!',
     p_again: 'لأ يا حبيبتي، جرّبي تاني',
-    p_done: 'برافو! خلّصتي اللعبة وخدتي نجوم',
+    p_done: 'برافو يا {name}! خلّصتي اللعبة وخدتي نجوم',
     p_lesson: 'يا سلام! خلّصتي الدرس كله، شاطرة شاطرة',
+    i_hello: 'أهلاً يا {name}! يلّا نلعب ونتعلم',
   },
 };
 Object.entries(DATA.letters).forEach(([L, l]) => { l.lower = L.toLowerCase(); });

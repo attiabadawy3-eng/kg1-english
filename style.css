@@ -105,6 +105,35 @@ img { max-width: 100%; pointer-events: none; }
 @keyframes pulse { 50% { transform: scale(1.06); } }
 .rec .bigrec { margin: 10px auto 14px; background: var(--blue); box-shadow: 0 5px 0 #4f8bb8; }
 
+/* her photo */
+.kid { display: inline-block; border-radius: 50%; overflow: hidden; border: 5px solid #fff; box-shadow: 0 4px 0 var(--line); position: relative; flex: none; }
+.kid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero { display: flex; align-items: center; justify-content: center; gap: 18px; }
+.hero .pet { margin: 0; }
+.hero-face { width: 130px; height: 130px; cursor: pointer; }
+.burst-face { width: 170px; height: 170px; }
+.set-face { width: 90px; height: 90px; }
+.set-face.empty { font-size: 54px; text-align: center; line-height: 80px; background: var(--card); }
+.crowned { overflow: visible; }
+.crowned img { border-radius: 50%; }
+.crowned::before { content: '👑'; position: absolute; top: -0.75em; left: 50%; transform: translateX(-50%) rotate(-8deg); font-size: 70px; z-index: 1; }
+.burst { flex-direction: column; gap: 10px; }
+.hello { text-align: center; font-size: 30px; font-weight: bold; margin: 8px 0 0; }
+.kidset { background: var(--card); border-radius: 22px; padding: 4px 16px 10px; margin: 10px 0 16px; }
+.kidrow { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.pick { display: inline-flex; align-items: center; font-size: 22px; height: 64px; min-width: 0; }
+.namel { display: block; margin-top: 12px; font-size: 20px; }
+.namel input { font: inherit; padding: 8px 12px; border-radius: 12px; border: 2px solid var(--line); width: 220px; }
+
+/* balloon-pop game: options float gently; the right one pops */
+.balloons { align-items: end; }
+.balloons .opt { background: var(--c); border-radius: 50% 50% 46% 46%; min-height: clamp(180px, 26vh, 300px); box-shadow: inset -14px -18px 0 rgba(0,0,0,.06); animation: float 3s ease-in-out var(--d) infinite; position: relative; }
+.balloons .opt::after { content: ''; position: absolute; bottom: -38px; left: 50%; width: 2px; height: 38px; background: #b9aea0; }
+.balloons .opt .glyph { color: #fff; text-shadow: 0 3px 0 rgba(0,0,0,.12); }
+@keyframes float { 50% { transform: translateY(-16px); } }
+.balloons .opt.pop { animation: pop-b .45s forwards; }
+@keyframes pop-b { 40% { transform: scale(1.25); } 100% { transform: scale(0); opacity: 0; } }
+
 /* emoji pictures (letters the booklet has no picture for) — sized like the images they replace */
 .emo { display: inline-block; line-height: 1; font-family: 'Noto Color Emoji', 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif; }
 .card .emo { font-size: min(30vh, 240px); }

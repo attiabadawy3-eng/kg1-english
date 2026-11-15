@@ -25,7 +25,7 @@ for (let k = 1; k <= 10; k++) {
   add('n_' + k, 'en', en(D.numbersEn[k]));
   add('na_' + k, 'ar', D.numbersAr[k]);
 }
-for (const [k, t] of Object.entries(D.instr)) add(k, 'ar', t);
+for (const [k, t] of Object.entries(D.instr)) add(k, 'ar', t.replace('{name}', 'حبيبتي')); // generated fallback never has her name
 fs.writeFileSync(path.join(__dirname, 'audio_src.json'), JSON.stringify(items, null, 1));
 
 // offline file list for the service worker
