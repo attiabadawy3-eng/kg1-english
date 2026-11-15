@@ -1,0 +1,582 @@
+[
+ {
+  "key": "w_chair",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">chair</prosody>"
+ },
+ {
+  "key": "a_chair",
+  "lang": "ar",
+  "ssml": "كرسي"
+ },
+ {
+  "key": "w_table",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">table</prosody>"
+ },
+ {
+  "key": "a_table",
+  "lang": "ar",
+  "ssml": "ترابيزة"
+ },
+ {
+  "key": "w_crayon",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">crayon</prosody>"
+ },
+ {
+  "key": "a_crayon",
+  "lang": "ar",
+  "ssml": "قلم ألوان"
+ },
+ {
+  "key": "w_scissors",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">scissors</prosody>"
+ },
+ {
+  "key": "a_scissors",
+  "lang": "ar",
+  "ssml": "مقص"
+ },
+ {
+  "key": "w_computer",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">computer</prosody>"
+ },
+ {
+  "key": "a_computer",
+  "lang": "ar",
+  "ssml": "كمبيوتر"
+ },
+ {
+  "key": "w_box",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">box</prosody>"
+ },
+ {
+  "key": "a_box",
+  "lang": "ar",
+  "ssml": "صندوق"
+ },
+ {
+  "key": "w_pencilbox",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">pencil box</prosody>"
+ },
+ {
+  "key": "a_pencilbox",
+  "lang": "ar",
+  "ssml": "مقلمة"
+ },
+ {
+  "key": "w_pencil",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">pencil</prosody>"
+ },
+ {
+  "key": "a_pencil",
+  "lang": "ar",
+  "ssml": "قلم رصاص"
+ },
+ {
+  "key": "w_in",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">in. The cat is in the box.</prosody>"
+ },
+ {
+  "key": "a_in",
+  "lang": "ar",
+  "ssml": "جوّه"
+ },
+ {
+  "key": "w_on",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">on. The girl is on the box.</prosody>"
+ },
+ {
+  "key": "a_on",
+  "lang": "ar",
+  "ssml": "فوق"
+ },
+ {
+  "key": "w_under",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">under. The girl is under the table.</prosody>"
+ },
+ {
+  "key": "a_under",
+  "lang": "ar",
+  "ssml": "تحت"
+ },
+ {
+  "key": "w_circle",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">circle</prosody>"
+ },
+ {
+  "key": "a_circle",
+  "lang": "ar",
+  "ssml": "دايرة"
+ },
+ {
+  "key": "w_square",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">square</prosody>"
+ },
+ {
+  "key": "a_square",
+  "lang": "ar",
+  "ssml": "مربع"
+ },
+ {
+  "key": "w_triangle",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">triangle</prosody>"
+ },
+ {
+  "key": "a_triangle",
+  "lang": "ar",
+  "ssml": "مثلث"
+ },
+ {
+  "key": "w_swing",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">swing</prosody>"
+ },
+ {
+  "key": "a_swing",
+  "lang": "ar",
+  "ssml": "مرجيحة"
+ },
+ {
+  "key": "w_slide",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">slide</prosody>"
+ },
+ {
+  "key": "a_slide",
+  "lang": "ar",
+  "ssml": "زحليقة"
+ },
+ {
+  "key": "w_seesaw",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">seesaw</prosody>"
+ },
+ {
+  "key": "a_seesaw",
+  "lang": "ar",
+  "ssml": "سي سو، المرجيحة اللي بتطلع وتنزل"
+ },
+ {
+  "key": "w_climb",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">climb. I can climb.</prosody>"
+ },
+ {
+  "key": "a_climb",
+  "lang": "ar",
+  "ssml": "يتسلّق"
+ },
+ {
+  "key": "w_up",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">up</prosody>"
+ },
+ {
+  "key": "a_up",
+  "lang": "ar",
+  "ssml": "لفوق"
+ },
+ {
+  "key": "w_down",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">down</prosody>"
+ },
+ {
+  "key": "a_down",
+  "lang": "ar",
+  "ssml": "لتحت"
+ },
+ {
+  "key": "w_run",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">run. I can run.</prosody>"
+ },
+ {
+  "key": "a_run",
+  "lang": "ar",
+  "ssml": "يجري"
+ },
+ {
+  "key": "w_jump",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">jump. I can jump.</prosody>"
+ },
+ {
+  "key": "a_jump",
+  "lang": "ar",
+  "ssml": "ينط"
+ },
+ {
+  "key": "w_play",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">play. I can play.</prosody>"
+ },
+ {
+  "key": "a_play",
+  "lang": "ar",
+  "ssml": "يلعب"
+ },
+ {
+  "key": "w_cat",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">cat</prosody>"
+ },
+ {
+  "key": "a_cat",
+  "lang": "ar",
+  "ssml": "قطة"
+ },
+ {
+  "key": "w_tree",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">tree</prosody>"
+ },
+ {
+  "key": "a_tree",
+  "lang": "ar",
+  "ssml": "شجرة"
+ },
+ {
+  "key": "w_train",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">train</prosody>"
+ },
+ {
+  "key": "a_train",
+  "lang": "ar",
+  "ssml": "قطر"
+ },
+ {
+  "key": "w_sun",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">sun</prosody>"
+ },
+ {
+  "key": "a_sun",
+  "lang": "ar",
+  "ssml": "شمس"
+ },
+ {
+  "key": "w_apple",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">apple</prosody>"
+ },
+ {
+  "key": "a_apple",
+  "lang": "ar",
+  "ssml": "تفاحة"
+ },
+ {
+  "key": "w_papaya",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">papaya</prosody>"
+ },
+ {
+  "key": "a_papaya",
+  "lang": "ar",
+  "ssml": "بابايا"
+ },
+ {
+  "key": "w_icecream",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">ice cream</prosody>"
+ },
+ {
+  "key": "a_icecream",
+  "lang": "ar",
+  "ssml": "آيس كريم"
+ },
+ {
+  "key": "l_C",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">C</say-as></prosody>"
+ },
+ {
+  "key": "lc_C",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">C</say-as>. <say-as interpret-as=\"characters\">C</say-as>. <break time=\"300ms\"/><phoneme alphabet=\"ipa\" ph=\"kə\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"kə\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"kə\">x</phoneme>. <break time=\"300ms\"/>cat!</prosody>"
+ },
+ {
+  "key": "ls_C",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><phoneme alphabet=\"ipa\" ph=\"kə\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"kə\">x</phoneme></prosody>"
+ },
+ {
+  "key": "l_T",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">T</say-as></prosody>"
+ },
+ {
+  "key": "lc_T",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">T</say-as>. <say-as interpret-as=\"characters\">T</say-as>. <break time=\"300ms\"/><phoneme alphabet=\"ipa\" ph=\"tə\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"tə\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"tə\">x</phoneme>. <break time=\"300ms\"/>tree!</prosody>"
+ },
+ {
+  "key": "ls_T",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><phoneme alphabet=\"ipa\" ph=\"tə\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"tə\">x</phoneme></prosody>"
+ },
+ {
+  "key": "l_S",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">S</say-as></prosody>"
+ },
+ {
+  "key": "lc_S",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">S</say-as>. <say-as interpret-as=\"characters\">S</say-as>. <break time=\"300ms\"/><phoneme alphabet=\"ipa\" ph=\"sːː\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"sːː\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"sːː\">x</phoneme>. <break time=\"300ms\"/>sun!</prosody>"
+ },
+ {
+  "key": "ls_S",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><phoneme alphabet=\"ipa\" ph=\"sːː\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"sːː\">x</phoneme></prosody>"
+ },
+ {
+  "key": "l_A",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">A</say-as></prosody>"
+ },
+ {
+  "key": "lc_A",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">A</say-as>. <say-as interpret-as=\"characters\">A</say-as>. <break time=\"300ms\"/><phoneme alphabet=\"ipa\" ph=\"æ\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"æ\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"æ\">x</phoneme>. <break time=\"300ms\"/>apple!</prosody>"
+ },
+ {
+  "key": "ls_A",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><phoneme alphabet=\"ipa\" ph=\"æ\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"æ\">x</phoneme></prosody>"
+ },
+ {
+  "key": "l_P",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">P</say-as></prosody>"
+ },
+ {
+  "key": "lc_P",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">P</say-as>. <say-as interpret-as=\"characters\">P</say-as>. <break time=\"300ms\"/><phoneme alphabet=\"ipa\" ph=\"pə\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"pə\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"pə\">x</phoneme>. <break time=\"300ms\"/>pencil!</prosody>"
+ },
+ {
+  "key": "ls_P",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><phoneme alphabet=\"ipa\" ph=\"pə\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"pə\">x</phoneme></prosody>"
+ },
+ {
+  "key": "l_I",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">I</say-as></prosody>"
+ },
+ {
+  "key": "lc_I",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><say-as interpret-as=\"characters\">I</say-as>. <say-as interpret-as=\"characters\">I</say-as>. <break time=\"300ms\"/><phoneme alphabet=\"ipa\" ph=\"aɪ\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"aɪ\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"aɪ\">x</phoneme>. <break time=\"300ms\"/>ice cream!</prosody>"
+ },
+ {
+  "key": "ls_I",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\"><phoneme alphabet=\"ipa\" ph=\"aɪ\">x</phoneme>, <phoneme alphabet=\"ipa\" ph=\"aɪ\">x</phoneme></prosody>"
+ },
+ {
+  "key": "n_1",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">one</prosody>"
+ },
+ {
+  "key": "na_1",
+  "lang": "ar",
+  "ssml": "واحد"
+ },
+ {
+  "key": "n_2",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">two</prosody>"
+ },
+ {
+  "key": "na_2",
+  "lang": "ar",
+  "ssml": "اتنين"
+ },
+ {
+  "key": "n_3",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">three</prosody>"
+ },
+ {
+  "key": "na_3",
+  "lang": "ar",
+  "ssml": "تلاتة"
+ },
+ {
+  "key": "n_4",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">four</prosody>"
+ },
+ {
+  "key": "na_4",
+  "lang": "ar",
+  "ssml": "أربعة"
+ },
+ {
+  "key": "n_5",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">five</prosody>"
+ },
+ {
+  "key": "na_5",
+  "lang": "ar",
+  "ssml": "خمسة"
+ },
+ {
+  "key": "n_6",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">six</prosody>"
+ },
+ {
+  "key": "na_6",
+  "lang": "ar",
+  "ssml": "ستة"
+ },
+ {
+  "key": "n_7",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">seven</prosody>"
+ },
+ {
+  "key": "na_7",
+  "lang": "ar",
+  "ssml": "سبعة"
+ },
+ {
+  "key": "n_8",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">eight</prosody>"
+ },
+ {
+  "key": "na_8",
+  "lang": "ar",
+  "ssml": "تمانية"
+ },
+ {
+  "key": "n_9",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">nine</prosody>"
+ },
+ {
+  "key": "na_9",
+  "lang": "ar",
+  "ssml": "تسعة"
+ },
+ {
+  "key": "n_10",
+  "lang": "en",
+  "ssml": "<prosody rate=\"-20%\">ten</prosody>"
+ },
+ {
+  "key": "na_10",
+  "lang": "ar",
+  "ssml": "عشرة"
+ },
+ {
+  "key": "i_cards",
+  "lang": "ar",
+  "ssml": "اسمعي الكلمة وقوليها معايا، وبعدين دوسي على السهم"
+ },
+ {
+  "key": "i_touch",
+  "lang": "ar",
+  "ssml": "اسمعي كويس، ودوسي على الصورة الصح"
+ },
+ {
+  "key": "i_touch_letter",
+  "lang": "ar",
+  "ssml": "اسمعي اسم الحرف، ودوسي على الحرف الصح"
+ },
+ {
+  "key": "i_touch_num",
+  "lang": "ar",
+  "ssml": "اسمعي الرقم، ودوسي على الرقم الصح"
+ },
+ {
+  "key": "i_match_words",
+  "lang": "ar",
+  "ssml": "دوسي على الصورة، وبعدين دوسي على الكلمة بتاعتها"
+ },
+ {
+  "key": "i_match_letters",
+  "lang": "ar",
+  "ssml": "دوسي على الحرف الكبير، وبعدين دوسي على الحرف الصغير بتاعه"
+ },
+ {
+  "key": "i_match_nums",
+  "lang": "ar",
+  "ssml": "دوسي على الرقم، وبعدين دوسي على الحاجات اللي عددها زيه"
+ },
+ {
+  "key": "i_trace",
+  "lang": "ar",
+  "ssml": "حطي صباعك على النقطة الخضرا، وامشي مع السهم"
+ },
+ {
+  "key": "i_sound",
+  "lang": "ar",
+  "ssml": "اسمعي صوت الحرف، ودوسي على الصورة اللي بتبدأ بيه"
+ },
+ {
+  "key": "i_count",
+  "lang": "ar",
+  "ssml": "عدّي الحاجات معايا، ودوسي على الرقم"
+ },
+ {
+  "key": "i_start",
+  "lang": "ar",
+  "ssml": "يلا نبدأ الدرس"
+ },
+ {
+  "key": "i_locked",
+  "lang": "ar",
+  "ssml": "خلّصي الدرس اللي قبله الأول"
+ },
+ {
+  "key": "p_good1",
+  "lang": "ar",
+  "ssml": "شاطرة"
+ },
+ {
+  "key": "p_good2",
+  "lang": "ar",
+  "ssml": "برافو عليكي"
+ },
+ {
+  "key": "p_good3",
+  "lang": "ar",
+  "ssml": "جميل أوي"
+ },
+ {
+  "key": "p_again",
+  "lang": "ar",
+  "ssml": "حاولي تاني يا حبيبتي"
+ },
+ {
+  "key": "p_done",
+  "lang": "ar",
+  "ssml": "برافو! خلّصتي اللعبة وكسبتي نجوم"
+ },
+ {
+  "key": "p_lesson",
+  "lang": "ar",
+  "ssml": "هايل! خلّصتي الدرس كله"
+ }
+]
