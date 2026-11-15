@@ -12,8 +12,7 @@ const items = [];
 const add = (key, lang, s) => items.push(lang === 'ar' ? { key, lang, text: s } : { key, lang, ssml: s });
 
 for (const [id, w] of Object.entries(D.words)) {
-  add('w_' + id, 'en', en(esc(w.say || w.en)));
-  add('a_' + id, 'ar', w.ar);
+  add('w_' + id, 'en', en(esc(w.say || w.en))); // Arabic meanings (a_<id>) have no generated audio: parent records them
 }
 for (const [L, l] of Object.entries(D.letters)) {
   add('l_' + L, 'en', en(ch(L)));

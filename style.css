@@ -97,6 +97,13 @@ img { max-width: 100%; pointer-events: none; }
 .rb { width: 58px; height: 58px; border-radius: 16px; font-size: 26px; background: var(--bg); }
 .row.on { box-shadow: 0 0 0 4px var(--red); }
 .row.on .recb { background: var(--red); color: #fff; }
+.quick { display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 20px 16px 60px; max-width: 800px; margin: auto; text-align: center; }
+.qn { font-size: 22px; color: var(--soft); }
+.qt { font-size: clamp(30px, 5vw, 46px); font-weight: bold; line-height: 1.5; background: var(--card); border-radius: 28px; padding: 28px; box-shadow: 0 5px 0 var(--line); width: 100%; }
+.bigrec { font-size: 30px; padding: 22px 40px; border-radius: 30px; background: var(--red); color: #fff; box-shadow: 0 5px 0 #c66f6f; display: block; margin: 0 auto; }
+.bigrec.on { animation: pulse 1s infinite; }
+@keyframes pulse { 50% { transform: scale(1.06); } }
+.rec .bigrec { margin: 10px auto 14px; background: var(--blue); box-shadow: 0 5px 0 #4f8bb8; }
 
 /* emoji pictures (letters the booklet has no picture for) — sized like the images they replace */
 .emo { display: inline-block; line-height: 1; font-family: 'Noto Color Emoji', 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif; }

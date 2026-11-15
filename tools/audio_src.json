@@ -5,19 +5,9 @@
   "ssml": "<prosody rate=\"-20%\">chair</prosody>"
  },
  {
-  "key": "a_chair",
-  "lang": "ar",
-  "text": "كرسي"
- },
- {
   "key": "w_table",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">table</prosody>"
- },
- {
-  "key": "a_table",
-  "lang": "ar",
-  "text": "ترابيزة"
  },
  {
   "key": "w_crayon",
@@ -25,19 +15,9 @@
   "ssml": "<prosody rate=\"-20%\">crayon</prosody>"
  },
  {
-  "key": "a_crayon",
-  "lang": "ar",
-  "text": "قلم ألوان"
- },
- {
   "key": "w_scissors",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">scissors</prosody>"
- },
- {
-  "key": "a_scissors",
-  "lang": "ar",
-  "text": "مقص"
  },
  {
   "key": "w_computer",
@@ -45,19 +25,9 @@
   "ssml": "<prosody rate=\"-20%\">computer</prosody>"
  },
  {
-  "key": "a_computer",
-  "lang": "ar",
-  "text": "كمبيوتر"
- },
- {
   "key": "w_box",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">box</prosody>"
- },
- {
-  "key": "a_box",
-  "lang": "ar",
-  "text": "صندوق"
  },
  {
   "key": "w_pencilbox",
@@ -65,19 +35,9 @@
   "ssml": "<prosody rate=\"-20%\">pencil box</prosody>"
  },
  {
-  "key": "a_pencilbox",
-  "lang": "ar",
-  "text": "مقلمة"
- },
- {
   "key": "w_pencil",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">pencil</prosody>"
- },
- {
-  "key": "a_pencil",
-  "lang": "ar",
-  "text": "قلم رصاص"
  },
  {
   "key": "w_in",
@@ -85,19 +45,9 @@
   "ssml": "<prosody rate=\"-20%\">in. The cat is in the box.</prosody>"
  },
  {
-  "key": "a_in",
-  "lang": "ar",
-  "text": "جوّه"
- },
- {
   "key": "w_on",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">on. The girl is on the box.</prosody>"
- },
- {
-  "key": "a_on",
-  "lang": "ar",
-  "text": "فوق"
  },
  {
   "key": "w_under",
@@ -105,19 +55,9 @@
   "ssml": "<prosody rate=\"-20%\">under. The girl is under the table.</prosody>"
  },
  {
-  "key": "a_under",
-  "lang": "ar",
-  "text": "تحت"
- },
- {
   "key": "w_circle",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">circle</prosody>"
- },
- {
-  "key": "a_circle",
-  "lang": "ar",
-  "text": "دايرة"
  },
  {
   "key": "w_square",
@@ -125,19 +65,9 @@
   "ssml": "<prosody rate=\"-20%\">square</prosody>"
  },
  {
-  "key": "a_square",
-  "lang": "ar",
-  "text": "مربع"
- },
- {
   "key": "w_triangle",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">triangle</prosody>"
- },
- {
-  "key": "a_triangle",
-  "lang": "ar",
-  "text": "مثلث"
  },
  {
   "key": "w_swing",
@@ -145,19 +75,9 @@
   "ssml": "<prosody rate=\"-20%\">swing</prosody>"
  },
  {
-  "key": "a_swing",
-  "lang": "ar",
-  "text": "مرجيحة"
- },
- {
   "key": "w_slide",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">slide</prosody>"
- },
- {
-  "key": "a_slide",
-  "lang": "ar",
-  "text": "زحليقة"
  },
  {
   "key": "w_seesaw",
@@ -165,19 +85,9 @@
   "ssml": "<prosody rate=\"-20%\">seesaw</prosody>"
  },
  {
-  "key": "a_seesaw",
-  "lang": "ar",
-  "text": "سي سو، المرجيحة اللي بتطلع وتنزل"
- },
- {
   "key": "w_climb",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">climb. I can climb.</prosody>"
- },
- {
-  "key": "a_climb",
-  "lang": "ar",
-  "text": "يتسلّق"
  },
  {
   "key": "w_up",
@@ -185,19 +95,9 @@
   "ssml": "<prosody rate=\"-20%\">up</prosody>"
  },
  {
-  "key": "a_up",
-  "lang": "ar",
-  "text": "لفوق"
- },
- {
   "key": "w_down",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">down</prosody>"
- },
- {
-  "key": "a_down",
-  "lang": "ar",
-  "text": "لتحت"
  },
  {
   "key": "w_run",
@@ -205,19 +105,9 @@
   "ssml": "<prosody rate=\"-20%\">run. I can run.</prosody>"
  },
  {
-  "key": "a_run",
-  "lang": "ar",
-  "text": "يجري"
- },
- {
   "key": "w_jump",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">jump. I can jump.</prosody>"
- },
- {
-  "key": "a_jump",
-  "lang": "ar",
-  "text": "ينط"
  },
  {
   "key": "w_play",
@@ -225,19 +115,9 @@
   "ssml": "<prosody rate=\"-20%\">play. I can play.</prosody>"
  },
  {
-  "key": "a_play",
-  "lang": "ar",
-  "text": "يلعب"
- },
- {
   "key": "w_icecream",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">ice cream</prosody>"
- },
- {
-  "key": "a_icecream",
-  "lang": "ar",
-  "text": "آيس كريم"
  },
  {
   "key": "w_apple",
@@ -245,19 +125,9 @@
   "ssml": "<prosody rate=\"-20%\">apple</prosody>"
  },
  {
-  "key": "a_apple",
-  "lang": "ar",
-  "text": "تفاحة"
- },
- {
   "key": "w_banana",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">banana</prosody>"
- },
- {
-  "key": "a_banana",
-  "lang": "ar",
-  "text": "موزة"
  },
  {
   "key": "w_beans",
@@ -265,19 +135,9 @@
   "ssml": "<prosody rate=\"-20%\">beans</prosody>"
  },
  {
-  "key": "a_beans",
-  "lang": "ar",
-  "text": "فول"
- },
- {
   "key": "w_boy",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">boy</prosody>"
- },
- {
-  "key": "a_boy",
-  "lang": "ar",
-  "text": "ولد"
  },
  {
   "key": "w_cat",
@@ -285,19 +145,9 @@
   "ssml": "<prosody rate=\"-20%\">cat</prosody>"
  },
  {
-  "key": "a_cat",
-  "lang": "ar",
-  "text": "قطة"
- },
- {
   "key": "w_cap",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">cap</prosody>"
- },
- {
-  "key": "a_cap",
-  "lang": "ar",
-  "text": "كاب"
  },
  {
   "key": "w_cloud",
@@ -305,19 +155,9 @@
   "ssml": "<prosody rate=\"-20%\">cloud</prosody>"
  },
  {
-  "key": "a_cloud",
-  "lang": "ar",
-  "text": "سحابة"
- },
- {
   "key": "w_duck",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">duck</prosody>"
- },
- {
-  "key": "a_duck",
-  "lang": "ar",
-  "text": "بطة"
  },
  {
   "key": "w_dog",
@@ -325,19 +165,9 @@
   "ssml": "<prosody rate=\"-20%\">dog</prosody>"
  },
  {
-  "key": "a_dog",
-  "lang": "ar",
-  "text": "كلب"
- },
- {
   "key": "w_desk",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">desk</prosody>"
- },
- {
-  "key": "a_desk",
-  "lang": "ar",
-  "text": "مكتب"
  },
  {
   "key": "w_dress",
@@ -345,19 +175,9 @@
   "ssml": "<prosody rate=\"-20%\">dress</prosody>"
  },
  {
-  "key": "a_dress",
-  "lang": "ar",
-  "text": "فستان"
- },
- {
   "key": "w_elephant",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">elephant</prosody>"
- },
- {
-  "key": "a_elephant",
-  "lang": "ar",
-  "text": "فيل"
  },
  {
   "key": "w_egg",
@@ -365,19 +185,9 @@
   "ssml": "<prosody rate=\"-20%\">egg</prosody>"
  },
  {
-  "key": "a_egg",
-  "lang": "ar",
-  "text": "بيضة"
- },
- {
   "key": "w_fruits",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">fruits</prosody>"
- },
- {
-  "key": "a_fruits",
-  "lang": "ar",
-  "text": "فواكه"
  },
  {
   "key": "w_fries",
@@ -385,19 +195,9 @@
   "ssml": "<prosody rate=\"-20%\">fries</prosody>"
  },
  {
-  "key": "a_fries",
-  "lang": "ar",
-  "text": "بطاطس محمّرة"
- },
- {
   "key": "w_father",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">father</prosody>"
- },
- {
-  "key": "a_father",
-  "lang": "ar",
-  "text": "بابا"
  },
  {
   "key": "w_goat",
@@ -405,19 +205,9 @@
   "ssml": "<prosody rate=\"-20%\">goat</prosody>"
  },
  {
-  "key": "a_goat",
-  "lang": "ar",
-  "text": "معزة"
- },
- {
   "key": "w_girl",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">girl</prosody>"
- },
- {
-  "key": "a_girl",
-  "lang": "ar",
-  "text": "بنت"
  },
  {
   "key": "w_heart",
@@ -425,19 +215,9 @@
   "ssml": "<prosody rate=\"-20%\">heart</prosody>"
  },
  {
-  "key": "a_heart",
-  "lang": "ar",
-  "text": "قلب"
- },
- {
   "key": "w_horse",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">horse</prosody>"
- },
- {
-  "key": "a_horse",
-  "lang": "ar",
-  "text": "حصان"
  },
  {
   "key": "w_honey",
@@ -445,19 +225,9 @@
   "ssml": "<prosody rate=\"-20%\">honey</prosody>"
  },
  {
-  "key": "a_honey",
-  "lang": "ar",
-  "text": "عسل"
- },
- {
   "key": "w_hair",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">hair</prosody>"
- },
- {
-  "key": "a_hair",
-  "lang": "ar",
-  "text": "شعر"
  },
  {
   "key": "w_ink",
@@ -465,19 +235,9 @@
   "ssml": "<prosody rate=\"-20%\">ink</prosody>"
  },
  {
-  "key": "a_ink",
-  "lang": "ar",
-  "text": "حبر"
- },
- {
   "key": "w_insects",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">insects</prosody>"
- },
- {
-  "key": "a_insects",
-  "lang": "ar",
-  "text": "حشرات"
  },
  {
   "key": "w_juice",
@@ -485,19 +245,9 @@
   "ssml": "<prosody rate=\"-20%\">juice</prosody>"
  },
  {
-  "key": "a_juice",
-  "lang": "ar",
-  "text": "عصير"
- },
- {
   "key": "w_jeans",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">jeans</prosody>"
- },
- {
-  "key": "a_jeans",
-  "lang": "ar",
-  "text": "بنطلون جينز"
  },
  {
   "key": "w_kangaroo",
@@ -505,19 +255,9 @@
   "ssml": "<prosody rate=\"-20%\">kangaroo</prosody>"
  },
  {
-  "key": "a_kangaroo",
-  "lang": "ar",
-  "text": "كنجارو"
- },
- {
   "key": "w_kite",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">kite</prosody>"
- },
- {
-  "key": "a_kite",
-  "lang": "ar",
-  "text": "طيارة ورق"
  },
  {
   "key": "w_kiwi",
@@ -525,19 +265,9 @@
   "ssml": "<prosody rate=\"-20%\">kiwi</prosody>"
  },
  {
-  "key": "a_kiwi",
-  "lang": "ar",
-  "text": "كيوي"
- },
- {
   "key": "w_lemon",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">lemon</prosody>"
- },
- {
-  "key": "a_lemon",
-  "lang": "ar",
-  "text": "لمونة"
  },
  {
   "key": "w_mouse",
@@ -545,19 +275,9 @@
   "ssml": "<prosody rate=\"-20%\">mouse</prosody>"
  },
  {
-  "key": "a_mouse",
-  "lang": "ar",
-  "text": "فار"
- },
- {
   "key": "w_milk",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">milk</prosody>"
- },
- {
-  "key": "a_milk",
-  "lang": "ar",
-  "text": "لبن"
  },
  {
   "key": "w_mother",
@@ -565,19 +285,9 @@
   "ssml": "<prosody rate=\"-20%\">mother</prosody>"
  },
  {
-  "key": "a_mother",
-  "lang": "ar",
-  "text": "ماما"
- },
- {
   "key": "w_nest",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">nest</prosody>"
- },
- {
-  "key": "a_nest",
-  "lang": "ar",
-  "text": "عش"
  },
  {
   "key": "w_nose",
@@ -585,19 +295,9 @@
   "ssml": "<prosody rate=\"-20%\">nose</prosody>"
  },
  {
-  "key": "a_nose",
-  "lang": "ar",
-  "text": "مناخير"
- },
- {
   "key": "w_octopus",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">octopus</prosody>"
- },
- {
-  "key": "a_octopus",
-  "lang": "ar",
-  "text": "أخطبوط"
  },
  {
   "key": "w_orange",
@@ -605,19 +305,9 @@
   "ssml": "<prosody rate=\"-20%\">orange</prosody>"
  },
  {
-  "key": "a_orange",
-  "lang": "ar",
-  "text": "برتقانة"
- },
- {
   "key": "w_papaya",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">papaya</prosody>"
- },
- {
-  "key": "a_papaya",
-  "lang": "ar",
-  "text": "بابايا"
  },
  {
   "key": "w_pen",
@@ -625,19 +315,9 @@
   "ssml": "<prosody rate=\"-20%\">pen</prosody>"
  },
  {
-  "key": "a_pen",
-  "lang": "ar",
-  "text": "قلم جاف"
- },
- {
   "key": "w_pan",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">pan</prosody>"
- },
- {
-  "key": "a_pan",
-  "lang": "ar",
-  "text": "طاسة"
  },
  {
   "key": "w_queen",
@@ -645,19 +325,9 @@
   "ssml": "<prosody rate=\"-20%\">queen</prosody>"
  },
  {
-  "key": "a_queen",
-  "lang": "ar",
-  "text": "ملكة"
- },
- {
   "key": "w_rabbit",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">rabbit</prosody>"
- },
- {
-  "key": "a_rabbit",
-  "lang": "ar",
-  "text": "أرنب"
  },
  {
   "key": "w_rice",
@@ -665,19 +335,9 @@
   "ssml": "<prosody rate=\"-20%\">rice</prosody>"
  },
  {
-  "key": "a_rice",
-  "lang": "ar",
-  "text": "رز"
- },
- {
   "key": "w_robot",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">robot</prosody>"
- },
- {
-  "key": "a_robot",
-  "lang": "ar",
-  "text": "روبوت"
  },
  {
   "key": "w_sun",
@@ -685,19 +345,9 @@
   "ssml": "<prosody rate=\"-20%\">sun</prosody>"
  },
  {
-  "key": "a_sun",
-  "lang": "ar",
-  "text": "شمس"
- },
- {
   "key": "w_sandwich",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">sandwich</prosody>"
- },
- {
-  "key": "a_sandwich",
-  "lang": "ar",
-  "text": "ساندوتش"
  },
  {
   "key": "w_tree",
@@ -705,19 +355,9 @@
   "ssml": "<prosody rate=\"-20%\">tree</prosody>"
  },
  {
-  "key": "a_tree",
-  "lang": "ar",
-  "text": "شجرة"
- },
- {
   "key": "w_train",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">train</prosody>"
- },
- {
-  "key": "a_train",
-  "lang": "ar",
-  "text": "قطر"
  },
  {
   "key": "w_turtle",
@@ -725,19 +365,9 @@
   "ssml": "<prosody rate=\"-20%\">turtle</prosody>"
  },
  {
-  "key": "a_turtle",
-  "lang": "ar",
-  "text": "سلحفة"
- },
- {
   "key": "w_umbrella",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">umbrella</prosody>"
- },
- {
-  "key": "a_umbrella",
-  "lang": "ar",
-  "text": "شمسية"
  },
  {
   "key": "w_van",
@@ -745,19 +375,9 @@
   "ssml": "<prosody rate=\"-20%\">van</prosody>"
  },
  {
-  "key": "a_van",
-  "lang": "ar",
-  "text": "عربية فان"
- },
- {
   "key": "w_violin",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">violin</prosody>"
- },
- {
-  "key": "a_violin",
-  "lang": "ar",
-  "text": "كمنجة"
  },
  {
   "key": "w_watermelon",
@@ -765,19 +385,9 @@
   "ssml": "<prosody rate=\"-20%\">watermelon</prosody>"
  },
  {
-  "key": "a_watermelon",
-  "lang": "ar",
-  "text": "بطيخة"
- },
- {
   "key": "w_watch",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">watch</prosody>"
- },
- {
-  "key": "a_watch",
-  "lang": "ar",
-  "text": "ساعة"
  },
  {
   "key": "w_fox",
@@ -785,19 +395,9 @@
   "ssml": "<prosody rate=\"-20%\">fox</prosody>"
  },
  {
-  "key": "a_fox",
-  "lang": "ar",
-  "text": "تعلب"
- },
- {
   "key": "w_yogurt",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">yogurt</prosody>"
- },
- {
-  "key": "a_yogurt",
-  "lang": "ar",
-  "text": "زبادي"
  },
  {
   "key": "w_yoyo",
@@ -805,19 +405,9 @@
   "ssml": "<prosody rate=\"-20%\">yo-yo</prosody>"
  },
  {
-  "key": "a_yoyo",
-  "lang": "ar",
-  "text": "يويو"
- },
- {
   "key": "w_zebra",
   "lang": "en",
   "ssml": "<prosody rate=\"-20%\">zebra</prosody>"
- },
- {
-  "key": "a_zebra",
-  "lang": "ar",
-  "text": "حمار وحشي"
  },
  {
   "key": "l_A",
@@ -1312,81 +902,81 @@
  {
   "key": "i_cards",
   "lang": "ar",
-  "text": "اسمعي وقولي ورايا، وبعدين دوسي على السهم"
+  "text": "اسمعي الكلمة وقوليها ورايا، وبعدين دوسي على السهم"
  },
  {
   "key": "i_touch",
   "lang": "ar",
-  "text": "اسمعي كويس، ودوسي على الصورة الصح"
+  "text": "فين الصورة دي؟ دوسي عليها"
  },
  {
   "key": "i_touch_letter",
   "lang": "ar",
-  "text": "اسمعي اسم الحرف، ودوسي عليه"
+  "text": "فين الحرف ده؟ دوسي عليه"
  },
  {
   "key": "i_touch_num",
   "lang": "ar",
-  "text": "اسمعي الرقم، ودوسي عليه"
+  "text": "فين الرقم ده؟ دوسي عليه"
  },
  {
   "key": "i_match_words",
   "lang": "ar",
-  "text": "دوسي على الصورة، وبعدين دوسي على الكلمة بتاعتها"
+  "text": "دوسي على الصورة، وبعدين على الكلمة بتاعتها"
  },
  {
   "key": "i_match_letters",
   "lang": "ar",
-  "text": "دوسي على الحرف الكبير، وبعدين دوسي على الحرف الصغير بتاعه"
+  "text": "دوسي على الحرف الكبير، وبعدين على الصغير بتاعه"
  },
  {
   "key": "i_match_nums",
   "lang": "ar",
-  "text": "دوسي على الرقم، وبعدين دوسي على الحاجات اللي عددها قدّه"
+  "text": "دوسي على الرقم، وبعدين على الحاجات اللي قدّه"
  },
  {
   "key": "i_trace",
   "lang": "ar",
-  "text": "يلا نكتب! حطي صباعك على النقطة الخضرا، وامشي ورا السهم"
+  "text": "يلّا نكتب! حطي صباعك على النقطة الخضرا وامشي ورا السهم"
  },
  {
   "key": "i_sound",
   "lang": "ar",
-  "text": "اسمعي صوت الحرف، ودوسي على الصورة اللي فيها الصوت ده"
+  "text": "اسمعي الصوت ده كويس، أنهي صورة بتبتدي بيه؟"
  },
  {
   "key": "i_count",
   "lang": "ar",
-  "text": "عدّي الحاجات، ودوسي على الرقم"
+  "text": "يلّا نعدّ سوا! كام واحد؟ دوسي على الرقم"
  },
  {
   "key": "p_good1",
   "lang": "ar",
-  "text": "شاطرة"
+  "text": "شاطرة يا حبيبتي!"
  },
  {
   "key": "p_good2",
   "lang": "ar",
-  "text": "برافو عليكي"
+  "text": "الله! برافو عليكي"
  },
  {
   "key": "p_good3",
   "lang": "ar",
-  "text": "جميل أوي"
+  "text": "جامدة أوي!"
  },
  {
   "key": "p_again",
   "lang": "ar",
-  "text": "معلش، حاولي تاني"
+  "text": "لأ يا حبيبتي، جرّبي تاني"
  },
  {
   "key": "p_done",
   "lang": "ar",
-  "text": "برافو! خلّصتي اللعبة وكسبتي نجوم"
+  "text": "برافو! خلّصتي اللعبة وخدتي نجوم"
  },
  {
   "key": "p_lesson",
   "lang": "ar",
-  "text": "هايل! خلّصتي الدرس كله"
+  "text": "يا سلام! خلّصتي الدرس كله، شاطرة شاطرة"
  }
 ]
